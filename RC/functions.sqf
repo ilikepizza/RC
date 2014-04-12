@@ -1,5 +1,5 @@
 /*
- * RC - Radio Communication v1.0
+ * RC - Radio Communication v1.1
  * DayZ Epoch Script
  * by ilikepizza
  */
@@ -52,8 +52,12 @@ RC_addMarker = {
     _pos resize 2;
     
     _marker = createMarkerLocal [_index, _pos];
-    _index setMarkerTypeLocal "mil_start";
-	_index setMarkerBrushLocal "Solid";
+    _index setMarkerTypeLocal RC_markerType;
+    if (RC_markerShowName) then {
+    	_index setMarkerTextLocal name _unit;
+    };
+    _index setMarkerColorLocal RC_markerColor;
+    _index setMarkerAlphaLocal RC_markerAlpha;
     _index setMarkerDirLocal getDir _unit;
     _index setMarkerSizeLocal [RC_markerSize,RC_markerSize];
     _index setMarkerPosLocal _pos;
@@ -92,4 +96,5 @@ RC_removeMarkers = {
         deleteMarkerLocal _name;
     } count RC_friends;
     RC_friends = [];
+    RC_index = 0;
 };

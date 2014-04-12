@@ -1,5 +1,5 @@
 /*
- * RC - Radio Communication v1.0
+ * RC - Radio Communication v1.1
  * DayZ Epoch Script
  * by ilikepizza
  */

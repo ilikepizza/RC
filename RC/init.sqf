@@ -1,5 +1,5 @@
 /*
- * RC - Radio Communication v1.0
+ * RC - Radio Communication v1.1
  * DayZ Epoch Script
  * by ilikepizza
  * 
@@ -16,12 +16,11 @@
  * Do NOT modify this file for simple use.
  */
  
-//client side script, but works in editor and singleplayer
+//client side script, but works also in editor and singleplayer
 if (!isServer or !isDedicated) then {
 	[] spawn {
 		//important variables, don't touch
 		RC_friends = [];
-		RC_units = [];
 		RC_index = 0;
 		
 		call compile preprocessFileLineNumbers "RC\config.sqf";
