@@ -1,0 +1,33 @@
+Currently used arma functions in the scripts.
+This list can be used to add exceptions for AntiHack scripts or BattleEye.
+
+//high priority - useful for hackers to get player information
+getPosASL
+getDir
+getVariable args: "CharacterID" and "friendlies"
+player
+weapons
+
+//medium priority - useful to visualize hacked informations
+createMarkerLocal
+setMarkerTypeLocal
+setMarkerBrushLocal
+setMarkerDirLocal
+setMarkerTextLocal
+setMarkerSizeLocal
+setMarkerPosLocal
+deleteMarkerLocal
+
+//low priority - used everywhere
+resize
+count
+select
+format
+compile
+preprocessFileLineNumbers
+in
+diag_log
+isNil
+sleep
+spawn
+terminate
