@@ -15,25 +15,36 @@ if (isNil "RC_addInterval") then {
     diag_log ("RC - Missing Config Value: RC_addInterval. Set to 2.");
 };
 
-if (isNil "RC_markerSize") then {
-  	RC_markerSize = 0.5;
-    diag_log ("RC - Missing Config Value: RC_markerSize. Set to 0.5.");
+if (isNil "RC_unitMarkerSize") then {
+  	RC_unitMarkerSize = 0.5;
+    diag_log ("RC - Missing Config Value: RC_unitMarkerSize. Set to 0.5.");
+};
+
+if (isNil "RC_vehicleMarkerSize") then {
+  	RC_vehicleMarkerSize = 1.0;
+    diag_log ("RC - Missing Config Value: RC_vehicleMarkerSize. Set to 1.0.");
 };
 
 if (isNil "RC_markerColor") then {
-  	RC_markerSize = "Default";
+  	RC_markerColor = "Default";
     diag_log ("RC - Missing Config Value: RC_markerColor. Set to 'ColorGreen'.");
 };
 
 if (isNil "RC_markerShowName") then {
-  	RC_markerSize = 0.5;
+  	RC_markerShowName = 0.5;
     diag_log ("RC - Missing Config Value: RC_markerShowName. Set to true.");
 };
 
-if (isNil "RC_markerType") then {
-  	RC_markerSize = "mil_start";
-    diag_log ("RC - Missing Config Value: RC_markerType. Set to 'mil_start'.");
+if (isNil "RC_unitMarkerType") then {
+  	RC_unitMarkerType = "mil_start";
+    diag_log ("RC - Missing Config Value: RC_unitMarkerType. Set to 'mil_start'.");
 };
+
+if (isNil "RC_vehicleMarkerType") then {
+  	RC_vehicleMarkerType = "Car";
+    diag_log ("RC - Missing Config Value: RC_vehicleMarkerType. Set to 'Car'.");
+};
+
 
 //check if variables were set with bad values
 if (RC_updateInterval < 0) then {
@@ -46,9 +57,14 @@ if (RC_addInterval < 0) then {
     diag_log ("RC - Bad Config Value: RC_addInterval < 0. Set to 0.");
 };
 
-if (RC_markerSize < 0) then {
-    RC_markerSize = 0;
-    diag_log ("RC - Bad Config Value: RC_markerSize < 0. Set to 0.");
+if (RC_unitMarkerSize < 0) then {
+    RC_unitMarkerSize = 0;
+    diag_log ("RC - Bad Config Value: RC_unitMarkerSize < 0. Set to 0.");
+};
+
+if (RC_vehicleMarkerSize < 0) then {
+    RC_vehicleMarkerSize = 0;
+    diag_log ("RC - Bad Config Value: RC_vehicleMarkerSize < 0. Set to 0.");
 };
 
 call compile preprocessFileLineNumbers "RC\colors.sqf";

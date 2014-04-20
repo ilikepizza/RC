@@ -5,12 +5,17 @@
  */
  
 while { true} do {
-    //update markers
+    //update unit markers
     {
-        _name = _x select 0;
-        _unit = _x select 1;
-        
-        [_unit, _name] call RC_addMarker;
+        _x call RC_addUnitMarker;
+        true
     } count RC_friends;
+    
+    //update vehicle markers
+    {
+        _x call RC_addVehicleMarker;
+        true
+    } count RC_vehicles;
+    
     sleep RC_updateInterval;
 };

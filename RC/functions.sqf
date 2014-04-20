@@ -44,22 +44,44 @@ RC_isFriend = {
  *	[unit, markerName] call RC_addMarker;
  *  Return: none
  */
-RC_addMarker = {
-    _unit = _this select 0;
-    _index = _this select 1;
+RC_addUnitMarker = {
+    _index = _this select 0;
+    _unit = _this select 1;
     
     _pos = getPosASL _unit;
     _pos resize 2;
     
     _marker = createMarkerLocal [_index, _pos];
-    _index setMarkerTypeLocal RC_markerType;
+    _index setMarkerTypeLocal RC_unitMarkerType;
     if (RC_markerShowName) then {
     	_index setMarkerTextLocal name _unit;
     };
     _index setMarkerColorLocal RC_markerColor;
     _index setMarkerAlphaLocal RC_markerAlpha;
     _index setMarkerDirLocal getDir vehicle _unit;
-    _index setMarkerSizeLocal [RC_markerSize,RC_markerSize];
+    _index setMarkerSizeLocal [RC_unitMarkerSize, RC_unitMarkerSize];
+    _index setMarkerPosLocal _pos;
+};
+
+/* Adds a marker at the given vehicles position.
+ * Usage:
+ *	[_vehicle, markerName] call RC_addMarker;
+ *  Return: none
+ */
+RC_addVehicleMarker = {
+    _index = _this select 0;
+    _vehicle = _this select 1;
+    
+    _pos = getPosASL _vehicle;
+    _pos resize 2;
+    
+    _markerVehicle = createMarkerLocal [_index, _pos];
+    _index setMarkerTypeLocal RC_vehicleMarkerType;
+    //_indexVehicle setMarkerTextLocal "";
+    _index setMarkerColorLocal RC_markerColor;
+    _index setMarkerAlphaLocal RC_markerAlpha;
+    _index setMarkerDirLocal getDir _vehicle;
+    _index setMarkerSizeLocal [RC_vehicleMarkerSize, RC_vehicleMarkerSize];
     _index setMarkerPosLocal _pos;
 };
 
@@ -70,31 +92,32 @@ RC_addMarker = {
  */
 RC_addUnitCommunication = {
 	_unit = _this;
+    _name = format ["%1", RC_index];
     
-    _isDouble = ({
-        _unit_listed = _x select 1;
-        _unit_listed == _unit;
-    } count RC_friends) > 0;
+	//remember unit and marker name for updating
+    RC_friends set [count RC_friends, [_name, _unit]];
     
-    // if not already listed
-    if (!_isDouble) then {
-        _name = format ["%1", RC_index];
-    	//[_unit, _name] call RC_addMarker;
-
-		//remember unit and marker name for updating
-        RC_friends = RC_friends + [[_name, _unit]];
-        RC_index = RC_index + 1;
+    _vehicle = vehicle _unit;
+    _inVehicle = _vehicle != _unit;
+    
+    if (_inVehicle) then {
+    	RC_vehicles set [count RC_vehicles, [_name+"Veh", _vehicle]];
     };
+    
+    RC_index = RC_index + 1;
 };
 
 RC_removeMarkers = {
     //remove previous markers
     {
-        _name = _x select 0;
-    	_unit = _x select 1;
-        
-        deleteMarkerLocal _name;
+        deleteMarkerLocal (_x select 0);
+        true
     } count RC_friends;
+    {
+        deleteMarkerLocal (_x select 0);
+        true
+    } count RC_vehicles;
     RC_friends = [];
+    RC_vehicles = [];
     RC_index = 0;
 };

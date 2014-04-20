@@ -21,11 +21,17 @@ RC_addInterval = 2;
 //------------------
 // Informations: https://community.bistudio.com/wiki/Mission_Editor:_Markers
 
-// Type of marker icon, see https://community.bistudio.com/wiki/cfgMarkers for possible types
-RC_markerType = "mil_start";
+// Type of unit marker icon, see https://community.bistudio.com/wiki/cfgMarkers for possible types
+RC_unitMarkerType = "mil_start";
 
-// Size of the marker icon (does affect not the name)
-RC_markerSize = 0.5;
+//The vehicle marker icon will be shown additionally to the unit marker icon
+RC_vehicleMarkerType = "Car";
+
+// Size of the unit marker icon (does affect not the name)
+RC_unitMarkerSize = 0.5;
+
+//Size of the vehicle marker icon
+RC_vehicleMarkerSize = 1.0;
 
 // Transparency of the marker icon and player name
 RC_markerAlpha = 1.0;

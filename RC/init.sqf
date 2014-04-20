@@ -21,6 +21,7 @@ if (!isServer or !isDedicated) then {
 	[] spawn {
 		//important variables, don't touch
 		RC_friends = [];
+        RC_vehicles = [];
 		RC_index = 0;
 		
 		call compile preprocessFileLineNumbers "RC\config.sqf";
