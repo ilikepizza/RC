@@ -58,7 +58,7 @@ RC_addMarker = {
     };
     _index setMarkerColorLocal RC_markerColor;
     _index setMarkerAlphaLocal RC_markerAlpha;
-    _index setMarkerDirLocal getDir _unit;
+    _index setMarkerDirLocal getDir vehicle _unit;
     _index setMarkerSizeLocal [RC_markerSize,RC_markerSize];
     _index setMarkerPosLocal _pos;
 };
