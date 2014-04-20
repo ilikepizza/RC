@@ -1,0 +1,4 @@
+class RscTitles
+{
+	#include "RC\desc_inc.h"
+};
