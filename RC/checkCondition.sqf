@@ -20,7 +20,7 @@
 	    	{
 	            //don't add own player
 		        if (player != _x) then {
-	                if (_x call RC_hasRadio && _x call RC_isFriend) then {
+	                if (_x call RC_hasRadio && _x call RC_isFriend && alive _x) then {
 		            	_x call RC_addUnitCommunication;
 	                };
 		        };
