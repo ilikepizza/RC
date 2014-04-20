@@ -39,6 +39,11 @@ RC_markerAlpha = 1.0;
 // Color of the marker icon and player name, see https://community.bistudio.com/wiki/setMarkerColor for possible colors
 RC_markerColor = "ColorGreen";
 
-// Enables showing of the players name next to the marker
+// Enable showing of the players name next to the marker
 RC_markerShowName = true;
 
+// Enable showing Radio GUI (Radio logo and names of active communications)
+RC_gui_en = true;
+
+// Color of the player ames in the Radio GUI
+RC_guiNameColor = [1,1,1,1];

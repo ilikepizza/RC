@@ -4,7 +4,10 @@
  * by ilikepizza
  */
  
-while { true} do {
+while {sleep RC_updateInterval; true} do {
+    waitUntil {not RC_updateLocked};
+    RC_updateLocked = true;
+    
     //update unit markers
     {
         _x call RC_addUnitMarker;
@@ -17,5 +20,12 @@ while { true} do {
         true
     } count RC_vehicles;
     
-    sleep RC_updateInterval;
+    //show gui
+    if (RC_gui_show) then {
+  		cutRsc ["RadioGUI","PLAIN"];
+    };
+    
+    RC_updateLocked = false;
+    
+    diag_log "updateMarkers";
 };

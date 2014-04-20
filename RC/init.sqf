@@ -23,6 +23,9 @@ if (!isServer or !isDedicated) then {
 		RC_friends = [];
         RC_vehicles = [];
 		RC_index = 0;
+        RC_gui_show = false;
+        RC_gui_names = "";
+        RC_updateLocked = false;
 		
 		call compile preprocessFileLineNumbers "RC\config.sqf";
 	    call compile preprocessFileLineNumbers "RC\checkConfig.sqf";

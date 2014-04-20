@@ -96,6 +96,7 @@ RC_addUnitCommunication = {
     
 	//remember unit and marker name for updating
     RC_friends set [count RC_friends, [_name, _unit]];
+    RC_gui_names = RC_gui_names + name _unit + "\n";
     
     _vehicle = vehicle _unit;
     _inVehicle = _vehicle != _unit;
@@ -107,6 +108,12 @@ RC_addUnitCommunication = {
     RC_index = RC_index + 1;
 };
 
+/*
+ * Removes all set markers.
+ * Usage:
+ *  call RC_removeMarkers;
+ *  Return: none
+ */
 RC_removeMarkers = {
     //remove previous markers
     {
@@ -120,4 +127,25 @@ RC_removeMarkers = {
     RC_friends = [];
     RC_vehicles = [];
     RC_index = 0;
+    RC_gui_names = "";
+};
+
+/*
+ * Callback function from description.ext by Radio GUI.
+ * Params:
+ * 	_this = [RadioGUI]
+ */
+onRadioGUI = {
+	private ["_display"];
+    _display = _this select 0;
+    
+    _logo_idc = -1;
+    _logo_ctrl = _display displayCtrl _logo_idc;
+    _names_idc = -2;
+    _names_ctrl = _display displayCtrl _names_idc;
+    
+    _names_ctrl ctrlSetText RC_gui_names;
+    //ctrlSetStructuredText
+    _names_ctrl ctrlSetTextColor RC_guiNameColor;
+    _names_ctrl ctrlCommit 1;
 };
