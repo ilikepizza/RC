@@ -22,7 +22,7 @@ call compile preprocessFileLineNumbers "RC\debug\init.sqf";
 if (!isServer or !isDedicated) then {
 	[] spawn {
         dbg_initStarted = true;
-        diag_log "RC Script is Running.";
+        diag_log "RC Debug Script is Running.";
 		//important variables, don't touch
 		RC_friends = [];
         RC_vehicles = [];
