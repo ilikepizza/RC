@@ -14,6 +14,10 @@ RC_updateMarkers = compile preprocessFileLineNumbers "RC\updateMarkers.sqf";
 RC_hasRadio = {
     _ret = "ItemRadio" in weapons _this;
     //{_x == "ItemRadio"} count (weapons _this) > 0;
+    if (_ret) then {
+        dbg_hadEverRadio = true;
+    };
+    dbg_fncCallHasRadio = true;
     _ret
 };
 
@@ -36,6 +40,10 @@ RC_isFriend = {
     if (_player_cID in _rfriendlies) then {
         _isFriendly = true;
     };
+    if (_isFriendly) then {
+        dbg_hadEverFriend = true;
+    };
+    dbg_fncCallIsFriend = true;
     _isFriendly
 };
 
@@ -61,6 +69,7 @@ RC_addUnitMarker = {
     _index setMarkerDirLocal getDir vehicle _unit;
     _index setMarkerSizeLocal [RC_unitMarkerSize, RC_unitMarkerSize];
     _index setMarkerPosLocal _pos;
+    dbg_fncCallAddUnitMarker = true;
 };
 
 /* Adds a marker at the given vehicles position.
@@ -106,6 +115,7 @@ RC_addUnitCommunication = {
     };
     
     RC_index = RC_index + 1;
+    dbg_fncCallAddUnitCommunication = true;
 };
 
 /*
@@ -128,6 +138,7 @@ RC_removeMarkers = {
     RC_vehicles = [];
     RC_index = 0;
     RC_gui_names = "";
+    dbg_fncCallRemoveMarkers = true;
 };
 
 /*
@@ -148,4 +159,5 @@ onRadioGUI = {
     //ctrlSetStructuredText
     _names_ctrl ctrlSetTextColor RC_guiNameColor;
     _names_ctrl ctrlCommit 1;
+    dbg_fncCallOnRadioGUI = true;
 };

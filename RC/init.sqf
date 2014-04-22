@@ -15,10 +15,14 @@
  * 
  * Do NOT modify this file for simple use.
  */
- 
+
+call compile preprocessFileLineNumbers "RC\debug\init.sqf";
+
 //client side script, but works also in editor and singleplayer
 if (!isServer or !isDedicated) then {
 	[] spawn {
+        dbg_initStarted = true;
+        diag_log "RC Script is Running.";
 		//important variables, don't touch
 		RC_friends = [];
         RC_vehicles = [];
@@ -33,3 +37,5 @@ if (!isServer or !isDedicated) then {
 		call compile preprocessFileLineNumbers "RC\checkCondition.sqf";
 	};
 };
+
+call compile preprocessFileLineNumbers "RC\debug\output.sqf";

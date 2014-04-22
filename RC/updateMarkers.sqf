@@ -27,5 +27,8 @@ while {sleep RC_updateInterval; true} do {
     
     RC_updateLocked = false;
     
-    diag_log "updateMarkers";
+    if (dbg_updatedOnce) then {
+      	dbg_updatedOften = true;  
+    };
+    dbg_updatedOnce = true;
 };

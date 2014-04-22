@@ -45,6 +45,9 @@
         };
         RC_updateLocked = false;
         
-        diag_log "checkCondition";
+        if (dbg_checkedOnce) then {
+	      	dbg_checkedOften = true;  
+	    };
+	    dbg_checkedOnce = true;
     };
 };
