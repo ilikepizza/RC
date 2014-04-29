@@ -45,6 +45,36 @@ if (isNil "RC_vehicleMarkerType") then {
     diag_log ("RC - Missing Config Value: RC_vehicleMarkerType. Set to 'Car'.");
 };
 
+if (isNil "RC_3DNames") then {
+  	RC_3DNames = true;
+    diag_log ("RC - Missing Config Value: RC_3DNames. Set to true.");
+};
+
+if (isNil "RC_3dInstantMove") then {
+  	RC_3dInstantMove = false;
+    diag_log ("RC - Missing Config Value: RC_3dInstantMove. Set to false.");
+};
+
+if (isNil "RC_3dMoveSpeed") then {
+  	RC_3dMoveSpeed = 0.1;
+    diag_log ("RC - Missing Config Value: RC_3dMoveSpeed. Set to 0.1.");
+};
+
+if (isNil "RC_minNameSize") then {
+  	RC_minNameSize = 0.3;
+    diag_log ("RC - Missing Config Value: RC_minNameSize. Set to 0.3.");
+};
+
+if (isNil "RC_showCircle") then {
+  	RC_showCircle = true;
+    diag_log ("RC - Missing Config Value: RC_showCircle. Set to true.");
+};
+
+if (isNil "RC_showRadioSymbol") then {
+  	RC_showRadioSymbol = true;
+    diag_log ("RC - Missing Config Value: RC_showRadioSymbol. Set to true.");
+};
+
 
 //check if variables were set with bad values
 if (RC_updateInterval < 0) then {
@@ -67,14 +97,24 @@ if (RC_vehicleMarkerSize < 0) then {
     diag_log ("RC - Bad Config Value: RC_vehicleMarkerSize < 0. Set to 0.");
 };
 
-call compile preprocessFileLineNumbers "RC\colors.sqf";
+if (RC_3dMoveSpeed < 0) then {
+    RC_3dMoveSpeed = 0;
+    diag_log ("RC - Bad Config Value: RC_3dMoveSpeed < 0. Set to 0.");
+};
+
+if (RC_minNameSize < 0) then {
+    RC_minNameSize = 0;
+    diag_log ("RC - Bad Config Value: RC_minNameSize < 0. Set to 0.");
+};
+
+if (RC_minNameSize > 1) then {
+    RC_minNameSize = 1;
+    diag_log ("RC - Bad Config Value: RC_minNameSize > 1. Set to 1.");
+};
+
+call compile preprocessFileLineNumbers "RC\config\colors.sqf";
 
 if (!(RC_markerColor in RC_arma_colors)) then {
     RC_markerColor = "ColorGreen";
     diag_log ("RC - Bad Config Value: RC_markerColor invalid. Set to 'ColorGreen'.");
-};
-
-if (RC_markerShowName && (!RC_markerShowName)) then {
-    RC_markerShowName = true;
-    diag_log ("RC - Bad Config Value: RC_markerShowName is not Boolean. Set to true.");
 };

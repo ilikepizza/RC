@@ -4,6 +4,8 @@
  * by ilikepizza
  */
  
+RC_playersLastDir = getDir player;
+ 
 while {sleep RC_updateInterval; true} do {
     waitUntil {not RC_updateLocked};
     RC_updateLocked = true;
@@ -22,10 +24,13 @@ while {sleep RC_updateInterval; true} do {
     
     //show gui
     if (RC_gui_show) then {
-  		cutRsc ["RadioGUI","PLAIN"];
+  		RC_2dLayer cutRsc ["RadioGUI","PLAIN"];
+    };
+    
+    // update 3d gui
+    if (RC_3DNames) then {
+        call RC_update3dNames;
     };
     
     RC_updateLocked = false;
-    
-    diag_log "updateMarkers";
 };

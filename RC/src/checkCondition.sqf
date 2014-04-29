@@ -21,7 +21,7 @@
 	            //don't add own player
 		        if (player != _x) then {
 	                if (_x call RC_hasRadio && _x call RC_isFriend && alive _x) then {
-		            	_x call RC_addUnitCommunication;
+		            	_x call RC_fnc_addRCUnit;
 	                };
 		        };
 		    } count allUnits;
@@ -30,7 +30,7 @@
             if (isNil "RC_markerUpdateScript") then {
                 RC_markerUpdateScript = [] spawn RC_updateMarkers;
             };
-            if (RC_gui_en) then {
+            if (RC_2dGUI) then {
             	RC_gui_show = true;
             };
 		} else {
@@ -39,12 +39,10 @@
             	terminate RC_markerUpdateScript;
                 RC_markerUpdateScript = nil;
             };
-            if (RC_gui_en) then {
+            if (RC_2dGUI) then {
             	RC_gui_show = false;
             };
         };
         RC_updateLocked = false;
-        
-        diag_log "checkCondition";
     };
 };

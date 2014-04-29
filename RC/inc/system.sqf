@@ -1,10 +1,8 @@
 /*
- * RC - Radio Communication v1.2
+ * RC - Radio Communication v1.3
  * DayZ Epoch Script
  * by ilikepizza
  */
- 
-RC_updateMarkers = compile preprocessFileLineNumbers "RC\updateMarkers.sqf";
  
 /* Checks wether the given unit has a radio.
  * Usage:
@@ -90,22 +88,31 @@ RC_addVehicleMarker = {
  *	unit call RC_addUnitCommunication;
  *  Return: none
  */
-RC_addUnitCommunication = {
+RC_fnc_addRCUnit = {
 	_unit = _this;
-    _name = format ["%1", RC_index];
+    _markerId = format ["%1", RC_index];
     
 	//remember unit and marker name for updating
-    RC_friends set [count RC_friends, [_name, _unit]];
+    RC_friends set [count RC_friends, [_markerId, _unit]];
     RC_gui_names = RC_gui_names + name _unit + "\n";
     
     _vehicle = vehicle _unit;
     _inVehicle = _vehicle != _unit;
     
     if (_inVehicle) then {
-    	RC_vehicles set [count RC_vehicles, [_name+"Veh", _vehicle]];
+    	RC_vehicles set [count RC_vehicles, [_markerId+"Veh", _vehicle]];
     };
     
     RC_index = RC_index + 1;
+};
+
+/* Returns the unit currently in communication with, with the given index.
+ * Usage:
+ *	Index call RC_fnc_getRCUnit;
+ *  Return: Unit
+ */
+RC_fnc_getRCUnit = {
+    (RC_friends select _this) select 1
 };
 
 /*
@@ -145,7 +152,5 @@ onRadioGUI = {
     _names_ctrl = _display displayCtrl _names_idc;
     
     _names_ctrl ctrlSetText RC_gui_names;
-    //ctrlSetStructuredText
     _names_ctrl ctrlSetTextColor RC_guiNameColor;
-    _names_ctrl ctrlCommit 1;
 };

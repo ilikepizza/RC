@@ -7,6 +7,7 @@ getDir
 getVariable args: "CharacterID" and "friendlies"
 player
 weapons
+distance
 
 //medium priority - useful to visualize hacked informations
 createMarkerLocal
@@ -19,6 +20,14 @@ setMarkerAlphaLocal
 setMarkerSizeLocal
 setMarkerPosLocal
 deleteMarkerLocal
+displayCtrl
+uiNamespace
+ctrlSetStructuredText
+ctrlSetText
+ctrlSetTextColor
+ctrlPosition
+ctrlSetPosition
+ctrlCommit
 
 //low priority - used everywhere
 resize
@@ -33,3 +42,6 @@ isNil
 sleep
 spawn
 terminate
+disableSerialization
+max
+parseText
