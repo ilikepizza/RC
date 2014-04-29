@@ -17,7 +17,7 @@ class RadioGUI
 			style = 2096; // texture (48) + original aspect ratio (2048)
 			//counting in multi-monitor setup
 			x = safeZoneXAbs;
-			y = safeZoneY + safeZoneH * 0.1;
+			y = safeZoneY + safeZoneH * 0.2;
 			w = 0.07;
 			h = safeZoneH * 0.1;
 			font = "EtelkaNarrowMediumPro";
@@ -35,7 +35,7 @@ class RadioGUI
 			style = 528; //multiline text (16) + no border (512)
 			//counting in multi-monitor setup
 			x = safeZoneXAbs;
-			y = safeZoneY + safeZoneH * 0.2;
+			y = safeZoneY + safeZoneH * 0.3;
 			w = -safeZoneX + 0.1;
 			h = safeZoneH * 0.6;
 			font = "EtelkaNarrowMediumPro";
