@@ -1,5 +1,5 @@
 /*
- * RC - Radio Communication v1.2
+ * RC - Radio Communication v1.3
  * DayZ Epoch Script
  * by ilikepizza
  */
@@ -28,19 +28,14 @@
 	        
             // start thread for markers if not already running
             if (isNil "RC_markerUpdateScript") then {
-                RC_markerUpdateScript = [] spawn RC_updateMarkers;
-            };
-            if (RC_2dGUI) then {
-            	RC_gui_show = true;
+                RC_markerUpdateScript = [] spawn RC_update;
             };
 		} else {
         	// stop thread for marker update if not already done
             if (!(isNil "RC_markerUpdateScript")) then {
             	terminate RC_markerUpdateScript;
                 RC_markerUpdateScript = nil;
-            };
-            if (RC_2dGUI) then {
-            	RC_gui_show = false;
+                call RC_disableGUI;
             };
         };
         RC_updateLocked = false;

@@ -1,5 +1,5 @@
 /*
- * RC - Radio Communication v1.2
+ * RC - Radio Communication v1.3
  * DayZ Epoch Script
  * by ilikepizza
  */
@@ -56,8 +56,8 @@ if (isNil "RC_3dInstantMove") then {
 };
 
 if (isNil "RC_3dMoveSpeed") then {
-  	RC_3dMoveSpeed = 0.1;
-    diag_log ("RC - Missing Config Value: RC_3dMoveSpeed. Set to 0.1.");
+  	RC_3dMoveSpeed = 0.2;
+    diag_log ("RC - Missing Config Value: RC_3dMoveSpeed. Set to 0.2.");
 };
 
 if (isNil "RC_minNameSize") then {
@@ -112,7 +112,7 @@ if (RC_minNameSize > 1) then {
     diag_log ("RC - Bad Config Value: RC_minNameSize > 1. Set to 1.");
 };
 
-call compile preprocessFileLineNumbers "RC\config\colors.sqf";
+"config\colors.sqf" call RC_fnc_call;
 
 if (!(RC_markerColor in RC_arma_colors)) then {
     RC_markerColor = "ColorGreen";

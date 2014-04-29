@@ -1,4 +1,4 @@
-RC v1.2
+RC v1.3
 ==
 
 Radio Communication Script for DayZ Epoch
@@ -32,11 +32,16 @@ Radio Communication Script for DayZ Epoch
 4. If you have infiSTAR anti-hack on your server, read the AntiHack part in this thread: http://epochmod.com/forum/index.php?/topic/9593-release-radio-communication-script-v11/
 
 ###Changelog
+####v1.3
+* added 3D Names
+* fixed RC GUI interfering with dayz GUI
+* added RC_path variable to move the script more easily
+
 ####v1.2
 * fixed direction of players in vehicles
 * added marker for players in vehicles (square around player)
 * added options for the vehicle marker
-* added GUI with player names currnetly visible by radio
+* added GUI with player names currently visible by radio
 * fixed markers of dead players, they are not shown anymore
 
 ####v1.1

@@ -12,6 +12,7 @@
  * 	execVM "RC\init.sqf";
  * 
  * Script can be configured by editing RC\config.sqf.
+ * Script directory can be moved easily by changing the RC_path variable below to the correct path.
  * 
  * Do NOT modify this file for simple use.
  */
@@ -23,7 +24,6 @@ if (!isServer or !isDedicated) then {
 		RC_friends = [];
         RC_vehicles = [];
 		RC_index = 0;
-        RC_gui_show = false;
         RC_gui_names = "";
         RC_updateLocked = false;
         
@@ -34,11 +34,37 @@ if (!isServer or !isDedicated) then {
         
         RC_2dLayer = 77;
         RC_3dLayer = 78;
-		
-		call compile preprocessFileLineNumbers "RC\config.sqf";
-	    call compile preprocessFileLineNumbers "RC\config\checkConfig.sqf";
-		call compile preprocessFileLineNumbers "RC\inc\functions.sqf";
-        call compile preprocessFileLineNumbers "RC\src\setupGUI.sqf";
-		call compile preprocessFileLineNumbers "RC\src\checkCondition.sqf";
+        
+        // Changes the default path for script search of the internal RC scripts.
+		// Change this path if you want to place the script directory somewhere else than "missionfile\RC".
+		// Example: For "missionfile\Custom\Scripts\RC" Directory set RC_path = "Custom\Scripts\RC"
+		// If you have renamed the main directory RC of the script, you can change the name here too.
+		RC_path = "RC";
+        
+        // get the correct path for script files of this script
+        RC_fnc_getPath = {
+          	RC_path + "\" + _this
+        };
+        
+        RC_fnc_comp = {
+            compile preprocessFileLineNumbers (_this call RC_fnc_getPath);
+        };
+        
+        //call and compile script files of RC script
+        RC_fnc_call = {
+            call (_this call RC_fnc_comp);
+        };
+        
+        RC_RadioTexPath = "rsrc\radio_symbol.paa" call RC_fnc_getPath;
+        RC_CircleTexPath = "rsrc\circle.paa" call RC_fnc_getPath;
+        
+        RC_RadioTexParam = format ["image='%1'", RC_RadioTexPath];
+        RC_CircleTexParam = format ["image='%1'", RC_CircleTexPath];
+        
+        "config.sqf" call RC_fnc_call;
+        "config\checkConfig.sqf" call RC_fnc_call;
+        "inc\functions.sqf" call RC_fnc_call;
+        "src\setupGUI.sqf" call RC_fnc_call;
+        "src\checkCondition.sqf" call RC_fnc_call;
 	};
 };

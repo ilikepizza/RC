@@ -5,11 +5,13 @@
  */
  
 // Define complex functions
- 
-RC_updateMarkers = compile preprocessFileLineNumbers "RC\src\updateMarkers.sqf";
-RC_update3dNames = compile preprocessFileLineNumbers "RC\src\update3DNames.sqf";
+
+RC_update = "src\update.sqf" call RC_fnc_comp;
+RC_update2dGUI = "src\update2DNames.sqf" call RC_fnc_comp;
+RC_update3dGUI = "src\update3DNames.sqf" call RC_fnc_comp;
+RC_disableGUI = "src\disableGUI.sqf" call RC_fnc_comp;
 
 // Define simple functions
 
-call compile preprocessFileLineNumbers "RC\inc\math.sqf";
-call compile preprocessFileLineNumbers "RC\inc\system.sqf";
+"inc\math.sqf" call RC_fnc_call;
+"inc\system.sqf" call RC_fnc_call;

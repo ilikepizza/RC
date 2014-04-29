@@ -5,7 +5,8 @@
  */
  
 disableSerialization;
-    
+
+private ["_display"];
 _display = uiNamespace getVariable "RC_3dDisplay";
 _unitCount = count RC_friends;
 
@@ -23,38 +24,36 @@ RC_playersLastDir = _currentDir;
 for "_i" from 0 to 15 do {
 	_ctrl = _display displayCtrl _i;
     
-    diag_log format ["_unitCount=%1", _unitCount];
+    //diag_log format ["_unitCount=%1", _unitCount];
     if (_unitCount > _i) then {
         //private ["_unit"];
         _unit = _i call RC_fnc_getRCUnit;
-		_unitName = name _unit;
         _screenPos = (worldToScreen getPos _unit);
         
-        _distance = player distance _unit;
-		_size = (1-(floor(_distance/5)*0.1)) max RC_minNameSize; // 1 at <5m, 0.5 at > 25m, 0.1 loss per 5m
-	    
-	    _colorParam = "color='#209d2d'";
-	    _sizeParam = format ["size='%1'", _size];
-        
-        _textParams = " shadow='2' shadowColor='#ff0000' align='center' ";
-	    //_textParams = _textParams + " underline='true'";
-        
-	    _string = format ["<img %2 image='RC\rsrc\circle.paa'/><br/><img %2 image='RC\rsrc\radio_symbol.paa'/><t %2 %3 %4>%1</t>", _unitName, _sizeParam, _colorParam, _textParams];
-	    _ctrl ctrlSetStructuredText (parseText _string);
-	    
-	    //get position values
-	    _x = _positionGUI select 0;
-	    _y = _positionGUI select 1;
-	    
         // is unit even drawn?
 	    if ( count _screenPos < 2) then {
             // disable the name gui control
-            diag_log format ["i=%1, if then then", _i];
-            //_ctrl ctrlShow false;
+            _ctrl ctrlShow false;
         	RC_3dNameVisibleArray set [_i, false];
 	    } else {
-            diag_log format ["i=%1, if then else", _i];
-            diag_log format ["_screenPos=%1", _screenPos];
+            _unitName = name _unit;
+            
+            _distance = player distance _unit;
+			_size = (1-(floor(_distance/5)*0.1)) max RC_minNameSize; // 1 at <5m, 0.5 at > 25m, 0.1 loss per 5m
+		    
+		    _colorParam = "color='#209d2d'";
+		    _sizeParam = format ["size='%1'", _size];
+	        
+	        _textParams = " shadow='2' shadowColor='#ff0000' align='center' ";
+		    //_textParams = _textParams + " underline='true'";
+	        
+		    _string = format ["<img %2 %5/><br/><img %2 %6/><t %2 %3 %4>%1</t>", _unitName, _sizeParam, _colorParam, _textParams, RC_CircleTexParam, RC_RadioTexParam];
+		    _ctrl ctrlSetStructuredText (parseText _string);
+		    
+		    //get position values
+		    _x = _positionGUI select 0;
+		    _y = _positionGUI select 1;
+            
             //calculate new gui position
             _positionGUI = ctrlPosition _ctrl;
             
@@ -66,9 +65,7 @@ for "_i" from 0 to 15 do {
 		    //set new position values
 		    _ctrl ctrlSetPosition [_x, _y];
             
-            drawIcon
-	        
-	        if (RC_3dInstantMove) then {
+	        if (_instantMove) then {
 	            _ctrl ctrlCommit 0;
 	        } else {
                 // if was visible before, then move smoothly
@@ -83,8 +80,7 @@ for "_i" from 0 to 15 do {
 		    RC_3dNameVisibleArray set [_i, true];
         };
     } else {
-        diag_log format ["i=%1, if else", _i];
-		//_ctrl ctrlShow false;
+		_ctrl ctrlShow false;
         RC_3dNameVisibleArray set [_i, false];
     };
 };

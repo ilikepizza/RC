@@ -5,7 +5,7 @@
  * 
  * Script can be configured by editing this file.
  */
- 
+
 //----------------------------
 // Script Update Configuration
 //----------------------------
@@ -65,7 +65,7 @@ RC_3dInstantMove = false;
 // Seconds in which th 3d names are moved to their players positions. Smaller value = faster. 
 // Ignore this variable if RC_3dInstantMove is set to 'true'. 
 // Setting this to 0, means the same as setting RC_3dInstantMove = true.
-RC_3dMoveSpeed = 0.1;
+RC_3dMoveSpeed = 0.2;
 
 // Minimal Size of 3D names.
 RC_minNameSize = 0.3;

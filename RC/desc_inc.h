@@ -1,17 +1,18 @@
-// RC - Radio Communication v1.2
+// RC - Radio Communication v1.3
+
 class RadioGUI
 {
 	idd = -1;
-	duration = "(missionNamespace getVariable 'RC_addInterval') + (missionNamespace getVariable 'RC_updateInterval')";
+	duration = 999999;
 	fadein = 0;
 	fadeout = 1;
-	onLoad = "_this call onRadioGUI"; //UI event handler
+	onLoad = "(uiNamespace setVariable ['RC_2dDisplay', (_this select 0)])";
 
 	class controls
 	{
 		class Symbol
 		{
-			idc = -1;
+			idc = 0;
 			type = 0;
 			style = 2096; // texture (48) + original aspect ratio (2048)
 			//counting in multi-monitor setup
@@ -23,13 +24,13 @@ class RadioGUI
 			sizeEx = 0.1;
 			colorBackground[] = {0,0,0,1};
 			colorText[] = {1,1,1,1};
-			text ="RC\rsrc\radio_symbol.paa";
+			text = "";
 			lineSpacing = 1; //required for multi-line style
 		};
 
 		class Names
 		{
-			idc = -2;
+			idc = 1;
 			type = 0;
 			style = 528; //multiline text (16) + no border (512)
 			//counting in multi-monitor setup
@@ -54,14 +55,14 @@ class Radio3D
 	duration = 999999;
 	fadein = 0;
 	fadeout = 1;
-	onLoad = "(uiNamespace setVariable ['RC_3dDisplay', (_this select 0)])"; //UI event handler
+	onLoad = "(uiNamespace setVariable ['RC_3dDisplay', (_this select 0)])";
 
 	class Rsc3DName
 	{
 		idc = -1;
 		type = 13;  // defined constant
 		style = 0;  // defined constant
-		colorBackground[] = { 1, 1, 1, 0.2};
+		colorBackground[] = { 1, 1, 1, 0};
 		x = safeZoneXAbs + 0.001;
 		y = safeZoneY + 0.001;
 		w = safeZoneW * 0.35;

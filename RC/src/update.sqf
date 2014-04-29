@@ -1,9 +1,9 @@
 /*
- * RC - Radio Communication v1.2
+ * RC - Radio Communication v1.3
  * DayZ Epoch Script
  * by ilikepizza
  */
- 
+
 RC_playersLastDir = getDir player;
  
 while {sleep RC_updateInterval; true} do {
@@ -22,14 +22,12 @@ while {sleep RC_updateInterval; true} do {
         true
     } count RC_vehicles;
     
-    //show gui
-    if (RC_gui_show) then {
-  		RC_2dLayer cutRsc ["RadioGUI","PLAIN"];
+    if (RC_2dGUI) then {
+        call RC_update2dGUI;
     };
     
-    // update 3d gui
     if (RC_3DNames) then {
-        call RC_update3dNames;
+        call RC_update3dGUI;
     };
     
     RC_updateLocked = false;
