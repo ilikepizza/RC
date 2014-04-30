@@ -25,7 +25,7 @@ for "_i" from 0 to 15 do {
 	_ctrl = _display displayCtrl _i;
     
     //diag_log format ["_unitCount=%1", _unitCount];
-    if (_unitCount > _i) then {
+    if (_unitCount > _i && (!visibleMap)) then {
         //private ["_unit"];
         _unit = _i call RC_fnc_getRCUnit;
         _screenPos = (worldToScreen getPos _unit);
