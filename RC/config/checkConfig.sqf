@@ -50,29 +50,29 @@ if (isNil "RC_3DNames") then {
     diag_log ("RC - Missing Config Value: RC_3DNames. Set to true.");
 };
 
-if (isNil "RC_3dSmoothMovement") then {
-  	RC_3dSmoothMovement = true;
-    diag_log ("RC - Missing Config Value: RC_3dSmoothMovement. Set to true.");
+if (isNil "RC_3DSmoothMovement") then {
+  	RC_3DSmoothMovement = true;
+    diag_log ("RC - Missing Config Value: RC_3DSmoothMovement. Set to true.");
 };
 
-if (isNil "RC_3dSmoothMoveSpeed") then {
-  	RC_3dSmoothMoveSpeed = 0.2;
-    diag_log ("RC - Missing Config Value: RC_3dSmoothMoveSpeed. Set to 0.2.");
+if (isNil "RC_3DSmoothMoveSpeed") then {
+  	RC_3DSmoothMoveSpeed = 0.2;
+    diag_log ("RC - Missing Config Value: RC_3DSmoothMoveSpeed. Set to 0.2.");
 };
 
-if (isNil "RC_minNameSize") then {
-  	RC_minNameSize = 0.3;
-    diag_log ("RC - Missing Config Value: RC_minNameSize. Set to 0.3.");
+if (isNil "RC_3DNameSizeMin") then {
+  	RC_3DNameSizeMin = 0.3;
+    diag_log ("RC - Missing Config Value: RC_3DNameSizeMin. Set to 0.3.");
 };
 
-if (isNil "RC_showCircle") then {
-  	RC_showCircle = true;
-    diag_log ("RC - Missing Config Value: RC_showCircle. Set to true.");
+if (isNil "RC_3DShowCircle") then {
+  	RC_3DShowCircle = true;
+    diag_log ("RC - Missing Config Value: RC_3DShowCircle. Set to true.");
 };
 
-if (isNil "RC_showRadioSymbol") then {
-  	RC_showRadioSymbol = true;
-    diag_log ("RC - Missing Config Value: RC_showRadioSymbol. Set to true.");
+if (isNil "RC_3DShowRadioSymbol") then {
+  	RC_3DShowRadioSymbol = true;
+    diag_log ("RC - Missing Config Value: RC_3DShowRadioSymbol. Set to true.");
 };
 
 if (isNil "RC_3DNamesRT") then {
@@ -102,19 +102,19 @@ if (RC_vehicleMarkerSize < 0) then {
     diag_log ("RC - Bad Config Value: RC_vehicleMarkerSize < 0. Set to 0.");
 };
 
-if (RC_3dSmoothMoveSpeed < 0) then {
-    RC_3dSmoothMoveSpeed = 0;
-    diag_log ("RC - Bad Config Value: RC_3dSmoothMoveSpeed < 0. Set to 0.");
+if (RC_3DSmoothMoveSpeed < 0) then {
+    RC_3DSmoothMoveSpeed = 0;
+    diag_log ("RC - Bad Config Value: RC_3DSmoothMoveSpeed < 0. Set to 0.");
 };
 
-if (RC_minNameSize < 0) then {
-    RC_minNameSize = 0;
-    diag_log ("RC - Bad Config Value: RC_minNameSize < 0. Set to 0.");
+if (RC_3DNameSizeMin < 0) then {
+    RC_3DNameSizeMin = 0;
+    diag_log ("RC - Bad Config Value: RC_3DNameSizeMin < 0. Set to 0.");
 };
 
-if (RC_minNameSize > 1) then {
-    RC_minNameSize = 1;
-    diag_log ("RC - Bad Config Value: RC_minNameSize > 1. Set to 1.");
+if (RC_3DNameSizeMin > 1) then {
+    RC_3DNameSizeMin = 1;
+    diag_log ("RC - Bad Config Value: RC_3DNameSizeMin > 1. Set to 1.");
 };
 
 "config\colors.sqf" call RC_fnc_call;

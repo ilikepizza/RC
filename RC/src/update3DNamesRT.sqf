@@ -31,7 +31,7 @@ waitUntil {
 	            _unitName = name _unit;
 	            
 	            _distance = player distance _unit;
-				_size = (1-(floor(_distance/5)*0.1)) max RC_minNameSize; // 1 at <5m, 0.5 at > 25m, 0.1 loss per 5m
+				_size = (1-(floor(_distance/5)*0.1)) max RC_3DNameSizeMin; // 1 at <5m, 0.5 at > 25m, 0.1 loss per 5m
 			    
 			    _colorParam = "color='#209d2d'";
 			    _sizeParam = format ["size='%1'", _size];
@@ -42,10 +42,6 @@ waitUntil {
 			    _string = format [RC_3dText, _unitName, _sizeParam, _colorParam, _textParams, RC_CircleTexParam, RC_RadioTexParam];
 			    _ctrl ctrlSetStructuredText (parseText _string);
 			    
-			    //get position values
-			    _x = _positionGUI select 0;
-			    _y = _positionGUI select 1;
-	            
 	            //calculate new gui position
 	            _positionGUI = ctrlPosition _ctrl;
 	            

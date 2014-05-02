@@ -61,22 +61,23 @@ RC_3DNames = true;
 
 // Enable realtime 3d positions. Disconnects update rate from RC_updateInterval. 
 // 3D positions are updated as fast as possible. Disables other speed settings of 3d positions.
-RC_3DNamesRT = false;
+RC_3DNamesRT = true;
 
 // Enables smooth moving of the 3d player names. Has no effect if RC_3DNamesRT is true.
-RC_3dSmoothMovement = true;
+RC_3DSmoothMovement = true;
 
-// Seconds in which th 3d names are moved to their players positions. Smaller value = faster. 
-// Ignore this variable if RC_3dInstantMove is set to 'true'. 
-// Setting this to 0, means the same as setting RC_3dInstantMove = true.
+// Seconds in which the 3d names are moved to their players positions. Smaller value = faster. 
+// Ignore this variable if RC_3dSmoothMovement is set to false. 
+// Setting this to 0, means the same as setting RC_3DSmoothMovement = false.
+// But it does not mean the position update is in realtime. It is still affected by RC_updateInterval.
 // Has no effect if RC_3DNamesRT is true.
-RC_3dSmoothMoveSpeed = 0.2;
+RC_3DSmoothMoveSpeed = 0.2;
 
 // Minimal Size of 3D names.
-RC_minNameSize = 0.3;
+RC_3DNameSizeMin = 0.3;
 
 // Shows a circle at the players location
-RC_showCircle = true;
+RC_3DShowCircle = true;
 
 // Shows a radio symbol next to the 3d player names
-RC_showRadioSymbol = true;
+RC_3DShowRadioSymbol = true;
