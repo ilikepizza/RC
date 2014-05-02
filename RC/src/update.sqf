@@ -26,7 +26,7 @@ while {sleep RC_updateInterval; true} do {
         call RC_update2dGUI;
     };
     
-    if (RC_3DNames) then {
+    if (!RC_3DNamesRT) then {
         call RC_update3dGUI;
     };
     

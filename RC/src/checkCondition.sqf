@@ -29,12 +29,19 @@
             // start thread for markers if not already running
             if (isNil "RC_markerUpdateScript") then {
                 RC_markerUpdateScript = [] spawn RC_update;
+                if (RC_3DNamesRT) then {
+                	RC_3dRTUpdateScript = [] spawn RC_updateRT3dGUI;
+                };
             };
 		} else {
         	// stop thread for marker update if not already done
             if (!(isNil "RC_markerUpdateScript")) then {
             	terminate RC_markerUpdateScript;
                 RC_markerUpdateScript = nil;
+                if (RC_3DNamesRT) then {
+	                terminate RC_3dRTUpdateScript;
+	                RC_3dRTUpdateScript = nil;
+                };
                 call RC_disableGUI;
             };
         };

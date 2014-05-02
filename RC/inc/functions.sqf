@@ -9,6 +9,7 @@
 RC_update = "src\update.sqf" call RC_fnc_comp;
 RC_update2dGUI = "src\update2DNames.sqf" call RC_fnc_comp;
 RC_update3dGUI = "src\update3DNames.sqf" call RC_fnc_comp;
+RC_updateRT3dGUI = "src\update3DNamesRT.sqf" call RC_fnc_comp;
 RC_disableGUI = "src\disableGUI.sqf" call RC_fnc_comp;
 
 // Define simple functions

@@ -75,6 +75,10 @@ if (isNil "RC_showRadioSymbol") then {
     diag_log ("RC - Missing Config Value: RC_showRadioSymbol. Set to true.");
 };
 
+if (isNil "RC_3DNamesRT") then {
+  	RC_3DNamesRT = false;
+    diag_log ("RC - Missing Config Value: RC_3DNamesRT. Set to false.");
+};
 
 
 //check if variables were set with bad values

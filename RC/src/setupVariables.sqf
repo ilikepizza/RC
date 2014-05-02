@@ -29,6 +29,11 @@ if (RC_showRadioSymbol) then {
 };
 RC_3dText = RC_3dText + "<t %2 %3 %4>%1</t>";
 
+//setup 3d variables
+if (!RC_3DNames) then {
+    RC_3DNamesRT = false;
+};
+
 //setup rsrc paths
 RC_RadioTexPath = "rsrc\radio_symbol.paa" call RC_fnc_getPath;
 RC_CircleTexPath = "rsrc\circle.paa" call RC_fnc_getPath;
