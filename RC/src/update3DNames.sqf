@@ -47,7 +47,7 @@ for "_i" from 0 to 15 do {
 	        _textParams = " shadow='2' shadowColor='#ff0000' align='center' ";
 		    //_textParams = _textParams + " underline='true'";
 	        
-		    _string = format ["<img %2 %5/><br/><img %2 %6/><t %2 %3 %4>%1</t>", _unitName, _sizeParam, _colorParam, _textParams, RC_CircleTexParam, RC_RadioTexParam];
+		    _string = format [RC_3dText, _unitName, _sizeParam, _colorParam, _textParams, RC_CircleTexParam, RC_RadioTexParam];
 		    _ctrl ctrlSetStructuredText (parseText _string);
 		    
 		    //get position values
