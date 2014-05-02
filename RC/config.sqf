@@ -59,13 +59,13 @@ RC_guiNameColor = [1,1,1,1];
 // Enables 3D Names.
 RC_3DNames = true;
 
-// Enables instant moving of the 3d player names.
-RC_3dInstantMove = false;
+// Enables smooth moving of the 3d player names.
+RC_3dSmoothMovement = true;
 
 // Seconds in which th 3d names are moved to their players positions. Smaller value = faster. 
 // Ignore this variable if RC_3dInstantMove is set to 'true'. 
 // Setting this to 0, means the same as setting RC_3dInstantMove = true.
-RC_3dMoveSpeed = 0.2;
+RC_3dSmoothMoveSpeed = 0.2;
 
 // Minimal Size of 3D names.
 RC_minNameSize = 0.3;

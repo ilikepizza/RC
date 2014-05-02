@@ -14,7 +14,7 @@ _currentDir = getDir player;
 _difference = [_currentDir, RC_playersLastDir] call RC_math_absDiff;
 
 // if player rotated, move instantly
-_instantMove = RC_3dInstantMove;
+_instantMove = !RC_3dSmoothMovement;
 if (_difference > 0.1) then {
     _instantMove = true;
 };
@@ -70,7 +70,7 @@ for "_i" from 0 to 15 do {
 	        } else {
                 // if was visible before, then move smoothly
 	            if (RC_3dNameVisibleArray select _i) then {
-	            	_ctrl ctrlCommit RC_3dMoveSpeed;
+	            	_ctrl ctrlCommit RC_3dSmoothMoveSpeed;
 	            } else {
 	                _ctrl ctrlCommit 0;
 	            };

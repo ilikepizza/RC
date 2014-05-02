@@ -50,14 +50,14 @@ if (isNil "RC_3DNames") then {
     diag_log ("RC - Missing Config Value: RC_3DNames. Set to true.");
 };
 
-if (isNil "RC_3dInstantMove") then {
-  	RC_3dInstantMove = false;
-    diag_log ("RC - Missing Config Value: RC_3dInstantMove. Set to false.");
+if (isNil "RC_3dSmoothMovement") then {
+  	RC_3dSmoothMovement = true;
+    diag_log ("RC - Missing Config Value: RC_3dSmoothMovement. Set to true.");
 };
 
-if (isNil "RC_3dMoveSpeed") then {
-  	RC_3dMoveSpeed = 0.2;
-    diag_log ("RC - Missing Config Value: RC_3dMoveSpeed. Set to 0.2.");
+if (isNil "RC_3dSmoothMoveSpeed") then {
+  	RC_3dSmoothMoveSpeed = 0.2;
+    diag_log ("RC - Missing Config Value: RC_3dSmoothMoveSpeed. Set to 0.2.");
 };
 
 if (isNil "RC_minNameSize") then {
@@ -74,6 +74,7 @@ if (isNil "RC_showRadioSymbol") then {
   	RC_showRadioSymbol = true;
     diag_log ("RC - Missing Config Value: RC_showRadioSymbol. Set to true.");
 };
+
 
 
 //check if variables were set with bad values
@@ -97,9 +98,9 @@ if (RC_vehicleMarkerSize < 0) then {
     diag_log ("RC - Bad Config Value: RC_vehicleMarkerSize < 0. Set to 0.");
 };
 
-if (RC_3dMoveSpeed < 0) then {
-    RC_3dMoveSpeed = 0;
-    diag_log ("RC - Bad Config Value: RC_3dMoveSpeed < 0. Set to 0.");
+if (RC_3dSmoothMoveSpeed < 0) then {
+    RC_3dSmoothMoveSpeed = 0;
+    diag_log ("RC - Bad Config Value: RC_3dSmoothMoveSpeed < 0. Set to 0.");
 };
 
 if (RC_minNameSize < 0) then {
