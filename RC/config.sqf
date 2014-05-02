@@ -76,6 +76,13 @@ RC_3DSmoothMoveSpeed = 0.2;
 // Minimal Size of 3D names.
 RC_3DNameSizeMin = 0.3;
 
+// Enable radius around player, where other 3d player names are visible.
+// Does not show people names outside RC_3DRadius.
+RC_3DRadiusEnable = true;
+
+// Radius (in meters) around player where player names are shown in 3D.
+RC_3DRadius = 1000;
+
 // Shows a circle at the players location
 RC_3DShowCircle = true;
 

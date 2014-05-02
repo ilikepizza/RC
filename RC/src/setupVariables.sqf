@@ -21,10 +21,10 @@ RC_3dLayer = 78;
 
 //setup 3d structured text
 RC_3dText = "";
-if (RC_showCircle) then {
+if (RC_3DShowCircle) then {
     RC_3dText = RC_3dText + "<img %2 %5/><br/>";
 };
-if (RC_showRadioSymbol) then {
+if (RC_3DShowRadioSymbol) then {
     RC_3dText = RC_3dText + "<img %2 %6/>";
 };
 RC_3dText = RC_3dText + "<t %2 %3 %4>%1</t>";
@@ -32,6 +32,10 @@ RC_3dText = RC_3dText + "<t %2 %3 %4>%1</t>";
 //setup 3d variables
 if (!RC_3DNames) then {
     RC_3DNamesRT = false;
+};
+
+if (!RC_3DRadiusEnable) then {
+    RC_3DRadius = 99999;
 };
 
 //setup rsrc paths

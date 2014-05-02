@@ -65,6 +65,16 @@ if (isNil "RC_3DNameSizeMin") then {
     diag_log ("RC - Missing Config Value: RC_3DNameSizeMin. Set to 0.3.");
 };
 
+if (isNil "RC_3DRadiusEnable") then {
+  	RC_3DRadiusEnable = true;
+    diag_log ("RC - Missing Config Value: RC_3DRadiusEnable. Set to true.");
+};
+
+if (isNil "RC_3DRadius") then {
+  	RC_3DRadius = 1000;
+    diag_log ("RC - Missing Config Value: RC_3DRadius. Set to 1000.");
+};
+
 if (isNil "RC_3DShowCircle") then {
   	RC_3DShowCircle = true;
     diag_log ("RC - Missing Config Value: RC_3DShowCircle. Set to true.");
@@ -115,6 +125,11 @@ if (RC_3DNameSizeMin < 0) then {
 if (RC_3DNameSizeMin > 1) then {
     RC_3DNameSizeMin = 1;
     diag_log ("RC - Bad Config Value: RC_3DNameSizeMin > 1. Set to 1.");
+};
+
+if (RC_3DRadius < 0) then {
+    RC_3DRadius = 0;
+    diag_log ("RC - Bad Config Value: RC_3DNameSizeMin < 0. Set to 0. This practically disables 3D names.");
 };
 
 "config\colors.sqf" call RC_fnc_call;
