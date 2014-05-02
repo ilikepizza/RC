@@ -32,6 +32,11 @@ Radio Communication Script for DayZ Epoch
 4. If you have infiSTAR anti-hack on your server, read the AntiHack part in this thread: http://epochmod.com/forum/index.php?/topic/9593-release-radio-communication-script-v11/
 
 ###Changelog
+####v1.3.1
+* added realtime updating for 3D names
+* added range limit for 3D names
+* implemented missing 3d options
+
 ####v1.3
 * added 3D Names
 * fixed RC GUI interfering with dayz GUI

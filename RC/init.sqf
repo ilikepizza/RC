@@ -26,6 +26,7 @@ if (!isServer or !isDedicated) then {
 		// If you have renamed the main directory RC of the script, you can change the name here too.
 		RC_path = "RC";
         
+        // DO NOT TOUCH
         // get the correct path for script files of this script
         RC_fnc_getPath = {
           	RC_path + "\" + _this
