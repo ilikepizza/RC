@@ -6,13 +6,15 @@
 
 disableSerialization;
 
-sleep 2;
+"src\setupVariables.sqf" call RC_fnc_call;
+
+sleep 0.5;
 
 RC_2dLayer cutRsc ["RadioGUI","PLAIN"];
 
 RC_3dLayer cutRsc ["Radio3D","PLAIN"];
 
-sleep 2;
+sleep 0.5;
 
 // setup texture path
 _display = uiNamespace getVariable "RC_2dDisplay";

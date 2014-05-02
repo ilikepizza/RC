@@ -20,21 +20,6 @@
 //client side script, but works also in editor and singleplayer
 if (!isServer or !isDedicated) then {
 	[] spawn {
-		//important variables, don't touch
-		RC_friends = [];
-        RC_vehicles = [];
-		RC_index = 0;
-        RC_gui_names = "";
-        RC_updateLocked = false;
-        
-	    RC_3dNameVisibleArray = [];
-	    for "_i" from 0 to 15 do {
-	      	RC_3dNameVisibleArray set [_i, false];
-	    };
-        
-        RC_2dLayer = 77;
-        RC_3dLayer = 78;
-        
         // Changes the default path for script search of the internal RC scripts.
 		// Change this path if you want to place the script directory somewhere else than "missionfile\RC".
 		// Example: For "missionfile\Custom\Scripts\RC" Directory set RC_path = "Custom\Scripts\RC"
@@ -55,16 +40,10 @@ if (!isServer or !isDedicated) then {
             call (_this call RC_fnc_comp);
         };
         
-        RC_RadioTexPath = "rsrc\radio_symbol.paa" call RC_fnc_getPath;
-        RC_CircleTexPath = "rsrc\circle.paa" call RC_fnc_getPath;
-        
-        RC_RadioTexParam = format ["image='%1'", RC_RadioTexPath];
-        RC_CircleTexParam = format ["image='%1'", RC_CircleTexPath];
-        
         "config.sqf" call RC_fnc_call;
         "config\checkConfig.sqf" call RC_fnc_call;
         "inc\functions.sqf" call RC_fnc_call;
-        "src\setupGUI.sqf" call RC_fnc_call;
+        "src\setup.sqf" call RC_fnc_call;
         "src\checkCondition.sqf" call RC_fnc_call;
 	};
 };
